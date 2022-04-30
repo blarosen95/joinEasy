@@ -1,0 +1,46 @@
+---
+title: "joinEasy"
+output: html_document
+---
+
+
+```{r message=F}
+library(joinEasy)
+left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+random_i <- sample(seq_len(nrow(left)))
+cutpoint <- round(nrow(left) / 2)
+right <- left[random_i[seq_len(cutpoint)],]
+```
+
+
+### anti_join
+#### Returns the set of all tuples that are in neither the intersection of the two dataframes, nor in the right dataframe.
+```{r}
+anti_join(left, right, 'id')
+# right for comparison:
+right
+```
+
+### inner_join
+#### Returns only those rows which are common to both dataframes.
+```{r}
+inner_join(left, right, 'id')
+```
+
+### left_outer_join
+#### Returns only those rows which are either common to both dataframes or present only in the left dataframe.
+```{r}
+left_outer_join(left, right, 'id')
+```
+
+### semi_join
+#### Returns a similar result to that of the inner_join, except that this one never duplicates rows.
+```{r}
+semi_join(left, right, 'id')
+```
+
+### cross_join
+#### Returns the cartesian product of the two dataframes. This is the only exported function that cannot accept a primary key value.
+```{r}
+cross_join(left, right)
+```

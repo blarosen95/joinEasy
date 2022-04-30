@@ -1,0 +1,365 @@
+\nonstopmode{}
+\documentclass[a4paper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[utf8,latin1]{inputenc}
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `joinEasy'}}
+\par\bigskip{\large \today}
+\end{center}
+\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{pdftitle = {joinEasy: Performs Join Operations}}}{}\begin{description}
+\raggedright{}
+\item[Type]\AsIs{Package}
+\item[Title]\AsIs{Performs Join Operations}
+\item[Version]\AsIs{1.0}
+\item[Date]\AsIs{2022-05-02}
+\item[Author]\AsIs{Blake Rosenberg}
+\item[Maintainer]\AsIs{Blake Rosenberg }\email{Github@OpenAnIssue.com}\AsIs{}
+\item[Description]\AsIs{Provides succinct solutions for simplifying the process of various join operations in R.}
+\item[Depends]\AsIs{sqldf}
+\item[License]\AsIs{MIT}
+\end{description}
+\Rdcontents{\R{} topics documented:}
+\inputencoding{utf8}
+\HeaderA{anti\_join}{Anti Join}{anti.Rul.join}
+%
+\begin{Description}\relax
+This function returns the set of all tuples that are in neither the intersection of the two input relations nor in the right dataframe.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+    {
+        # This function can be used without providing a primary key value:
+        anti_join(left, right)
+        # Or with a primary key value:
+        anti_join(left, right, key)
+    }
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\item[\code{key}] The primary key value. If not provided, the function will use the dataframes' row numbers as the primary key.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- anti_join(left, right, key = "id")
+    output
+    # right for comparison:
+    right
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{cross\_join}{Cross Join}{cross.Rul.join}
+%
+\begin{Description}\relax
+This function returns the cartesian product of two relations.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+cross_join(left, right)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- cross_join(left, right)
+    output
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{full\_outer\_exclusive\_join}{Full Outer (INNER Exclusive) Join}{full.Rul.outer.Rul.exclusive.Rul.join}
+%
+\begin{Description}\relax
+The `full\_outer\_exclusive\_join` function is not yet implemented.
+Once released, this function will return all rows from both left and right which are unique to the dataframes.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+    {
+        # This function will be usable without providing a primary key value:
+        full_outer_exclusive_join(left, right)
+        # Or with a primary key value:
+        full_outer_exclusive_join(left, right, key)
+    }
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\item[\code{key}] The primary key value. If not provided, the function will use the dataframes' row numbers as the primary key.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Planned example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- full_outer_exclusive_join(left, right, key = "id")
+    output
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{inner\_join}{Inner Join}{inner.Rul.join}
+%
+\begin{Description}\relax
+This function returns only those rows which are common to both dataframes.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+    {
+        # This function can be used without providing a primary key value:
+        inner_join(left, right)
+        # Or with a primary key value:
+        inner_join(left, right, key)
+    }
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\item[\code{key}] The primary key value. If not provided, the function will use the dataframes' row numbers as the primary key.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- inner_join(left, right, key = "id")
+    output
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{joinEasy}{Performs Join Operations}{joinEasy}
+\keyword{package}{joinEasy}
+%
+\begin{Description}\relax
+Provides succinct solutions for simplifying the process of various join operations in R.
+\end{Description}
+%
+\begin{Details}\relax
+
+The DESCRIPTION file:
+This package was not yet installed at build time.\\{}
+
+Index:  This package was not yet installed at build time.\\{}
+\code{\LinkA{anti\_join}{anti.Rul.join}}
+\code{\LinkA{cross\_join}{cross.Rul.join}}
+\end{Details}
+%
+\begin{Author}\relax
+Blake Rosenberg
+
+Maintainer: Blake Rosenberg <Github@OpenAnIssue.com>
+\end{Author}
+%
+\begin{References}\relax
+www.mtitek.com/tutorials/oracle/sql-join.php Provides visual depictions of all operations present in this package
+\end{References}
+%
+\begin{SeeAlso}\relax
+\#\textasciitilde{}\textasciitilde{} Optional links to other man pages, e.g. \textasciitilde{}\textasciitilde{}
+\#\textasciitilde{}\textasciitilde{} \code{\LinkA{<pkg>}{<pkg>}} \textasciitilde{}\textasciitilde{}
+\end{SeeAlso}
+%
+\begin{Examples}
+\begin{ExampleCode}
+# simple examples of the most important functions
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{left\_outer\_join}{Left Outer Join}{left.Rul.outer.Rul.join}
+%
+\begin{Description}\relax
+This function returns only those rows which are either common to both dataframes or only present in the left dataframe.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+    {
+        # This function can be used without providing a primary key value:
+        left_outer_join(left, right)
+        # Or with a primary key value:
+        left_outer_join(left, right, key)
+    }
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\item[\code{key}] The primary key value. If not provided, the function will use the dataframes' row numbers as the primary key.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- left_outer_join(left, right, key = "id")
+    output
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{right\_outer\_join}{Right Outer Join}{right.Rul.outer.Rul.join}
+%
+\begin{Description}\relax
+The `right\_outer\_join` function is not yet implemented.
+Once released, this function will return only those rows which are either common to both dataframes or only present in the right dataframe.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+    {
+        # This function will be usable without providing a primary key value:
+        right_outer_join(left, right)
+        # Or with a primary key value:
+        right_outer_join(left, right, key)
+    }
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\item[\code{key}] The primary key value. If not provided, the function will use the dataframes' row numbers as the primary key.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Planned example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- right_outer_join(left, right, key = "id")
+    output
+\end{ExampleCode}
+\end{Examples}
+\inputencoding{utf8}
+\HeaderA{semi\_join}{Semi Join}{semi.Rul.join}
+%
+\begin{Description}\relax
+This function returns a similar result to that of the inner\_join, except that this one never duplicates rows.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+    {
+        # This function can be used without providing a primary key value:
+        semi_join(left, right)
+        # Or with a primary key value:
+        semi_join(left, right, key)
+    }
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{left}] A dataframe which will be used as the left-side table in the operation.
+\item[\code{right}] A dataframe which will be used as the right-side table in the operation.
+\item[\code{key}] The primary key value. If not provided, the function will use the dataframes' row numbers as the primary key.
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+\begin{ldescription}
+\item[\code{rtn}] The resulting dataframe.
+\end{ldescription}
+\end{Value}
+%
+\begin{Examples}
+\begin{ExampleCode}
+    # Example usage:
+    left <- data.frame(id = 100:106, letter = c('a', 'b', 'c', 'd', 'e', 'f', 'g'))
+    random_i <- sample(seq_len(nrow(left)))
+    cutpoint <- round(nrow(left) / 2)
+    right <- left[random_i[seq_len(cutpoint)],]
+    output <- semi_join(left, right, key = "id")
+    output
+\end{ExampleCode}
+\end{Examples}
+\printindex{}
+\end{document}

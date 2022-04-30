@@ -1,0 +1,22 @@
+* installing *source* package 'joinEasy' ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/anti_join.Rd:9: unexpected section header '\details'
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/cross_join.Rd:8: unexpected '}'
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/full_outer_exclusive_join.Rd:10: unexpected section header '\details'
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/inner_join.Rd:9: unexpected section header '\details'
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/left_outer_join.Rd:9: unexpected section header '\details'
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/right_outer_join.Rd:10: unexpected section header '\details'
+Warning: C:/Users/TheJerkBox/Desktop/joinEasy/man/semi_join.Rd:9: unexpected section header '\details'
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+*** arch - x64
+** testing if installed package can be loaded from final location
+*** arch - i386
+*** arch - x64
+** testing if installed package keeps a record of temporary installation path
+* DONE (joinEasy)
